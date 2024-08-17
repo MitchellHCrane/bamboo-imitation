@@ -19,9 +19,11 @@ const config: Config = {
       darkPrimary: "#527A00",
       secondary: "#EBEBEB",
       darkSecondary: "#999999",
+      footer: "#686868",
       white: "#FFFFFF",
       black: "#000000",
       link: "#0872B3",
+      text: "#222222",
     },
     fontFamily: {
       sans: ["Lato", "sans-serif"],
