@@ -1,23 +1,20 @@
 "use client";
 import { useState } from "react";
-import Image from "next/image";
 
 const employeeData = [
   {
     photo: "",
     employeeNumber: "E1234",
-    lastName: "Smith",
-    firstName: "John",
+    name: "Crane, Mitch",
     jobTitle: "Software Engineer",
-    location: "New York",
+    location: "Santaquin",
     employmentStatus: "Full-Time",
-    hireDate: "2021-06-15",
+    hireDate: "2024-09-1",
   },
   {
     photo: "",
     employeeNumber: "E1234",
-    lastName: "yohan",
-    firstName: "John",
+    name: "Smith, John",
     jobTitle: "Software Engineer",
     location: "New York",
     employmentStatus: "Full-Time",
@@ -29,35 +26,26 @@ const PeopleTable = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const rowsPerPage = 5;
 
-  const totalPages = Math.ceil(employeeData.length / rowsPerPage);
-
-  const handleClick = (page: number) => {
-    setCurrentPage(page);
-  };
-
-  const handleNextPage = () => {
-    if (currentPage < totalPages - 1) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-
-  const handlePreviousPage = () => {
-    if (currentPage > 0) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
+  const headers = [
+    `Employee<br />Photo`,
+    "Employee<br />#",
+    "Last Name,<br />First Name",
+    "Job<br />Title",
+    "Location",
+    "Employment<br />Status",
+    "Hire<br />Date",
+  ];
 
   const renderTableHeader = () => {
     return (
-      <tr>
-        <th>Employee Photo</th>
-        <th>Employee #</th>
-        <th>Last Name</th>
-        <th>First Name</th>
-        <th>Job Title</th>
-        <th>Location</th>
-        <th>Employment Status</th>
-        <th>Hire Date</th>
+      <tr className="bg-secondary">
+        {headers.map((header, index) => (
+          <th
+            key={index}
+            className={`border-box text-left pt-3 px-4 pb-[11px] text-iconSecondary text-[15px]`}
+            dangerouslySetInnerHTML={{ __html: header }}
+          />
+        ))}
       </tr>
     );
   };
@@ -69,60 +57,58 @@ const PeopleTable = () => {
       startIndex + rowsPerPage
     );
 
-    return selectedData.map((employee, index) => (
-      <tr key={index}>
-        <td>
-          <Image
-            src={employee.photo}
-            alt="Employee"
-            className="w-10 rounded-full"
-            width={50}
-            height={50}
-          />
-        </td>
-        <td>{employee.employeeNumber}</td>
-        <td>{employee.lastName}</td>
-        <td>{employee.firstName}</td>
-        <td>{employee.jobTitle}</td>
-        <td>{employee.location}</td>
-        <td>{employee.employmentStatus}</td>
-        <td>{new Date(employee.hireDate).toLocaleDateString()}</td>
-      </tr>
-    ));
+    return selectedData.map((employee, index) => {
+      const [lastName, firstName] = employee.name
+        .split(", ")
+        .map((name) => name.trim());
+
+      const initials = `${firstName[0]}${lastName[0]}`;
+
+      return (
+        <tr className="border-b border-borderSecondary" key={index}>
+          <td className="pt-[13px] px-4 pb-[15px]">
+            <div className="flex w-[86px] h-[86px] items-center text-4xl text-white justify-center bg-profileSecondary rounded-full">
+              {initials}
+            </div>
+          </td>
+          <td className="box-border align-top pt-[13px] px-4 pb-[15px]">
+            {employee.employeeNumber}
+          </td>
+          <td className="text-link box-border align-top pt-[13px] px-4 pb-[15px]">
+            {employee.name}
+          </td>
+          <td className="box-border align-top pt-[13px] px-4 pb-[15px]">
+            {employee.jobTitle}
+          </td>
+          <td className="box-border align-top pt-[13px] px-4 pb-[15px]">
+            {employee.location}
+          </td>
+          <td className="box-border align-top pt-[13px] px-4 pb-[15px]">
+            {employee.employmentStatus}
+          </td>
+          <td className="box-border align-top pt-[13px] px-4 pb-[15px]">
+            {new Date(employee.hireDate).toLocaleDateString()}
+          </td>
+        </tr>
+      );
+    });
   };
 
   const renderPagination = () => {
     return (
-      <div className="pagination">
-        <button onClick={handlePreviousPage} disabled={currentPage === 0}>
-          Previous
-        </button>
-        {[...Array(totalPages)].map((_, i) => (
-          <button
-            key={i}
-            onClick={() => handleClick(i)}
-            className={currentPage === i ? "active" : ""}
-          >
-            {i + 1}
-          </button>
-        ))}
-        <button
-          onClick={handleNextPage}
-          disabled={currentPage === totalPages - 1}
-        >
-          Next
-        </button>
+      <div className="flex gap-1 py-4 text-secondaryLink text-[14px]">
+        <p>1-2</p>
+        <p>of</p>
+        <p>2</p>
       </div>
     );
   };
 
   return (
-    <div className="text-text">
-      <table className="min-w-full divide-y divide-gray-200">
+    <div className="text-text pt-6 border-b border-borderSecondary">
+      <table className="min-w-full">
         <thead className="bg-gray-50">{renderTableHeader()}</thead>
-        <tbody className="bg-white divide-y divide-gray-200">
-          {renderTableData()}
-        </tbody>
+        <tbody className="bg-white">{renderTableData()}</tbody>
       </table>
       {renderPagination()}
     </div>

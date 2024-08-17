@@ -2,8 +2,8 @@ import bambooFooter from "../app/images/bambooFooter.png";
 import Image from "next/image";
 const Footer = () => {
   return (
-    <div className="flex items-center justify-between min-w-[100vw] text-footer pt-6 pb-12 px-[50px] bg-white">
-      <p className="">
+    <div className="flex items-center justify-between min-w-[100vw] text-secondaryLink pt-6 pb-12 px-[50px] bg-white">
+      <p className="text-[13px]">
         <a className="hover:text-darkPrimary" href="#">
           Privacy Policy
         </a>

@@ -1,29 +1,21 @@
 import PeopleTable from "@/components/PeopleTable";
-import {
-  ArrowTopRightOnSquareIcon,
-  Bars4Icon,
-} from "@heroicons/react/24/outline";
+import TableConfig from "@/components/TableConfig";
+import TableFilters from "@/components/TableFilters";
+import TableTop from "@/components/TableTop";
 
-export default function Home() {
+export default function People() {
   return (
-    <main className="bg-white px-8">
-      {/* Top of Table */}
-      <section className="flex items-baseline justify-between">
-        <div className="flex items-center mt-[21px] text-darkPrimary">
-          <Bars4Icon className="size-8" />
-          <p className="mx-[15px] my-[11px] text-[2.266rem] font-bold">
-            People
-          </p>
-        </div>
-        <p className="flex items-center text-link">
-          <ArrowTopRightOnSquareIcon className="size-4 mr-1.5" />
-          Quick access to the directory
-        </p>
-      </section>
-      {/* Table  */}
-      <section>
+    <main className="bg-white px-8 h-screen">
+      <div className="max-w-[1348px] mx-auto">
+        {/* Top of Table */}
+        <TableTop />
+        {/* Table Config */}
+        <TableConfig />
+        {/* Table Filters */}
+        <TableFilters />
+        {/* Table  */}
         <PeopleTable />
-      </section>
+      </div>
     </main>
   );
 }
