@@ -14,11 +14,29 @@ const employeeData = [
   {
     photo: "",
     employeeNumber: "E1234",
-    name: "Smith, John",
+    name: "Brower, Andrew",
     jobTitle: "Software Engineer",
-    location: "New York",
+    location: "Utah",
     employmentStatus: "Full-Time",
-    hireDate: "2021-06-15",
+    hireDate: "2024-02-15",
+  },
+  {
+    photo: "",
+    employeeNumber: "E1234",
+    name: "Nelson, Ty",
+    jobTitle: "SAE",
+    location: "Utah",
+    employmentStatus: "Full-Time",
+    hireDate: "2024-02-15",
+  },
+  {
+    photo: "",
+    employeeNumber: "E1234",
+    name: "Nelson, Zack",
+    jobTitle: "SAE",
+    location: "Utah",
+    employmentStatus: "Full-Time",
+    hireDate: "2024-02-15",
   },
 ];
 

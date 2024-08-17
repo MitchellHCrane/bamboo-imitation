@@ -44,7 +44,7 @@ const menuItems = [
 
 const Navbar = () => {
   return (
-    <div className="flex justify-between items-center px-8 border-primary border-b-[3px] bg-secondary h-20">
+    <div className="flex justify-between items-center px-8 border-primary border-b-[3px] bg-secondary h-20 top-0 z-50 sticky">
       <div className="flex items-center">
         <Image alt="Your Company Here Logo" src={companyHereLogo} />
         <div className="ml-9">
