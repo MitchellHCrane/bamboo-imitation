@@ -16,9 +16,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="font-sans">
-        <Navbar />
-        {children}
-        <Footer />
+        <div className="lg:hidden flex flex-col justify-center items-center">
+          <p className="text-primary text-lg mt-24">View On Larger Browser</p>
+          <p className="text-sm">Designed for Desktop Only</p>
+        </div>
+        <div className="hidden lg:block">
+          <Navbar />
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   );
