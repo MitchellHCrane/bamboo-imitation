@@ -92,8 +92,10 @@ const PeopleTable = () => {
           <td className="box-border align-top pt-[13px] px-4 pb-[15px]">
             {employee.employeeNumber}
           </td>
-          <td className="text-link box-border align-top pt-[13px] px-4 pb-[15px]">
-            {employee.name}
+          <td className="box-border align-top pt-[13px] px-4 pb-[15px]">
+            <button className="text-link hover:text-darkPrimary hover:underline hover:cursor-pointer">
+              {employee.name}
+            </button>
           </td>
           <td className="box-border align-top pt-[13px] px-4 pb-[15px]">
             {employee.jobTitle}

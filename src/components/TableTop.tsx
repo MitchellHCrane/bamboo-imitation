@@ -10,10 +10,10 @@ const TableTop = () => {
         <Bars4Icon className="size-8" />
         <p className="mx-[15px] my-[11px] text-[2.266rem] font-bold">People</p>
       </div>
-      <p className="flex items-center text-link">
+      <button className="flex items-center text-link hover:text-darkPrimary ">
         <ArrowTopRightOnSquareIcon className="size-4 mr-1.5" />
         Quick access to the directory
-      </p>
+      </button>
     </section>
   );
 };
